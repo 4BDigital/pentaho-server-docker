@@ -4,8 +4,8 @@ MAINTAINER Luan luan.m.paschoal@gmail.com
 LABEL Pentaho='Server 9.0 com drivers postgres e oracle'
 
 # Init ENV
-ENV BISERVER_VERSION 9.0
-ENV BISERVER_TAG 9.0.0.0-423
+ENV BISERVER_VERSION 9.4
+ENV BISERVER_TAG 9.4.0.0-343
 ENV PENTAHO_HOME /opt/pentaho
 
 # Apply JAVA_HOME
@@ -26,7 +26,7 @@ RUN mkdir ${PENTAHO_HOME}; useradd -s /bin/bash -d ${PENTAHO_HOME} pentaho; chow
 # Disable first-time startup prompt
 # Disable daemon mode for Tomcat
 RUN /usr/bin/wget --progress=dot:giga \
-"http://downloads.sourceforge.net/project/pentaho/Pentaho%20${BISERVER_VERSION}/server/pentaho-server-ce-${BISERVER_TAG}.zip" \
+"https://privatefilesbucket-community-edition.s3.us-west-2.amazonaws.com/${BISERVER_TAG}/ce/server/pentaho-server-ce-${BISERVER_TAG}.zip" \
 -O /tmp/pentaho-server-ce-${BISERVER_TAG}.zip; \
 /usr/bin/unzip -q /tmp/pentaho-server-ce-${BISERVER_TAG}.zip -d $PENTAHO_HOME; \
 rm -f /tmp/pentaho-server-ce-${BISERVER_TAG}.zip $PENTAHO_HOME/pentaho-server/promptuser.sh; \
